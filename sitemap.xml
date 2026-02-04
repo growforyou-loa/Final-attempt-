@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url>
+    <loc>https://growforyou.in/</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Core Pages -->
+  <url>
+    <loc>https://growforyou.in/about.html</loc>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/awareness-lab.html</loc>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/journey.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/secret.html</loc>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/insights.html</loc>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Reading & Content -->
+  <url>
+    <loc>https://growforyou.in/ebooks.html</loc>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/reader.html</loc>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/subliminals.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/subconscious.html</loc>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/manifest.html</loc>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- Community & Account -->
+  <url>
+    <loc>https://growforyou.in/community.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/account.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/login.html</loc>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Contact & System -->
+  <url>
+    <loc>https://growforyou.in/contact.html</loc>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://growforyou.in/thank-you.html</loc>
+    <priority>0.20</priority>
+  </url>
+
+</urlset>

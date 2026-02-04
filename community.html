@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Community — Grow Together | Grow for You</title>
+
+<link rel="canonical" href="https://growforyou.in/community.html">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<meta name="description" content="Join the Grow for You community for shared awareness, reflections, and conscious conversations.">
+<meta name="keywords" content="community, conscious community, Grow for You">
+
+<meta property="og:title" content="Community — Grow for You">
+<meta property="og:description" content="A growing community focused on awareness and inner growth.">
+<meta property="og:type" content="website">
+
+<meta name="author" content="Gajanan Dhobale — Founder of Grow for You">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+
+<body data-page="community">
+
+<!-- HEADER -->
+<div id="site-header"></div>
+
+<!-- HERO -->
+
+<section class="hero hero-manifest fade-in">
+  <h1>Grow for You Community</h1>
+  <p>
+    A calm circle of people who value awareness, reflection,
+    and inner growth — without noise.
+  </p>
+</section>
+
+<!-- WHY COMMUNITY -->
+<section class="sections">
+  <div class="card slide-up">
+    <h2>Why Stay Connected?</h2>
+    <p>
+      Grow for You is not updated daily and that is intentional.
+      We share only when something meaningful is added.
+    </p>
+    <p>
+      By joining the community you will receive:
+    </p>
+    <ul class="simple-list">
+      <li>Awareness Certificate</li>
+      <li> Updates when new ebooks or magazines are added</li>
+      <li> Weekly quote changes</li>
+      <li> New reflections or insights</li>
+      <li> Occasional community highlights</li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="sections alt">
+  <div class="card">
+    <h2>Join Grow for You </h2>
+    <p>Start with understanding how thoughts shape life.</p>
+    <a href="login.html" class="btn">Join Grow for You </a>
+  </div>
+</section>
+
+<!-- COMMUNITY INTERACTION NOTE -->
+<section class="sections">
+  <div class="card slide-up">
+    <h2>Community Interaction</h2>
+
+    <p>
+      Joining the Grow for You community keeps you connected with updates
+      and new content.
+    </p>
+
+    <p>
+      To actively interact with others — share thoughts, reply, or take part
+      in live discussions — please also sign in to the comment section.
+    </p>
+
+    <p class="note">
+      The comment space is open for calm conversations, shared reflections,
+      and respectful dialogue with fellow readers.
+    </p>
+  </div>
+</section>
+
+<!-- ================= COMMUNITY DISCUSSION ================= -->
+
+<section class="community-comments">
+  <h2 class="comments-title">Community Discussion</h2>
+
+  <p class="comments-note">
+    Sign in to join the live discussion with other members.
+    Share thoughts, respond freely, and grow together.
+  </p>
+
+  <div id="disqus_thread"></div>
+</section>
+
+<!-- ================= DIRECT MESSAGE TO GROW FOR YOU ================= -->
+<section class="sections">
+  <div class="card slide-up">
+    <h2>Write to Grow for You</h2>
+
+    <p>
+      If you want to share something privately — a thought, feedback,
+      suggestion, or concern — you can write directly to us here.
+    </p>
+
+    <p class="note">
+      All fields are required. Messages are read with care and respect.
+    </p>
+
+    <!-- Netlify Contact Form -->
+    <form 
+  name="contactus-form"
+  method="POST"
+  data-netlify="true"
+  action="/thank-you.html">
+
+  <!-- REQUIRED FOR NETLIFY -->
+  <input type="hidden" name="form-name" value="contactus-form">
+
+  <input 
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+  >
+
+  <input 
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    required
+  >
+
+  <input
+    name="concern"   
+    placeholder="Write your message"
+    rows="4"
+ required>
+  
+
+  <button type="submit" class="btn">
+    Submit
+  </button>
+</form>
+  </div>
+</section>
+
+<!-- LEAVE COMMUNITY -->
+<section class="sections">
+  <div class="card slide-up">
+    <h2>Request Account Deletion</h2>
+
+    <p class="note">
+      If at any point you feel this space no longer serves you,
+      you’re free to leave — no questions asked.
+    </p>
+
+    <!-- Unsubscribe Form -->
+    <form 
+  name="account-deletion-request"
+  method="POST"
+  data-netlify="true"
+  action="/thank-you.html"
+>
+
+  <!-- REQUIRED -->
+  <input type="hidden" name="form-name" value="account-deletion-request">
+
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+  >
+
+  <input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    required
+  >
+
+  <textarea
+    name="reason"
+    placeholder="Reason for leaving"
+    rows="4"
+    required
+  ></textarea>
+
+  <button type="submit" class="btn">
+    Delete My Account 
+  </button>
+
+</form>
+  </div>
+</section>
+
+<!-- PRIVACY NOTE -->
+<section class="sections">
+  <div class="card slide-up">
+    <h2>Privacy & Respect</h2>
+    <p>
+      We respect your privacy.
+      Your email is used only to send updates related to Grow for You.
+    </p>
+    <p class="note">
+      We never sell, share, or misuse personal information.
+    </p>
+  </div>
+</section>
+
+<script>
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://growforyou.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
+
+<noscript>
+  Please enable JavaScript to view the comments powered by Disqus.
+</noscript>
+
+
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+<script
+    chatbot_id="6962f0550d2225501dcebf5a"
+    data-type="default"
+    src="https://app.thinkstack.ai/bot/thinkstackai-loader.min.js"
+></script>
+<!-- JS -->
+<script src="assets/js/main.js"></script>
+<div id="menuOverlay"></div>
+
+</body>
+</html>

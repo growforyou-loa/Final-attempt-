@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login — Grow for You</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Log in or join Grow for You to access member-only conscious content.">
+
+<meta name="author" content="Gajanan Dhobale — Founder of Grow for You">
+
+<link rel="canonical" href="https://growforyou.in/login.html">
+
+<meta property="og:title" content="Login — Grow for You">
+<meta property="og:description" content="Access your Grow for You membership.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growforyou.in/login.html">
+
+  <!-- Main site styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Netlify Identity -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <style>
+    /* ===== Login Page Styling ===== */
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+
+    .login-card {
+      background: #020617;
+      padding: 40px 32px;
+      border-radius: 14px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    }
+
+    .login-card h1 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .login-card p {
+      font-size: 0.95rem;
+      color: #cbd5f5;
+      margin-bottom: 26px;
+      line-height: 1.6;
+    }
+
+    .login-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      font-size: 1rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 14px;
+      background: #6366f1;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .login-btn.secondary {
+      background: transparent;
+      border: 1px solid #6366f1;
+      color: #c7d2fe;
+    }
+
+    .login-note {
+      margin-top: 18px;
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-card">
+    <h1>Welcome to Grow for You 🌿</h1>
+    <p>
+      Login to access member-only ebooks, conscious tools,
+      and your personal growth space.
+    </p>
+
+    <button class="login-btn" onclick="openLogin()">Login</button>
+    <button class="login-btn secondary" onclick="openSignup()">Create Account</button>
+
+    <div class="login-note">
+      Secure • Private • No spam
+    </div>
+  </div>
+
+  <script>
+    const netlifyIdentity = window.netlifyIdentity;
+
+    function openLogin() {
+      netlifyIdentity.open('login');
+    }
+
+    function openSignup() {
+      netlifyIdentity.open('signup');
+    }
+
+    // Auto-redirect if already logged in
+    netlifyIdentity.on('init', user => {
+      if (user) {
+        window.location.href = "/reader.html";
+      }
+    });
+
+    // Redirect after login
+    netlifyIdentity.on('login', user => {
+      netlifyIdentity.close();
+      window.location.href = "/reader.html";
+    });
+  </script>
+
+</body>
+</html>

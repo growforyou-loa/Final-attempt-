@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>Reader —The Law of Attraction | Grow for You</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<meta name="description" content="Member-only ebook reader by Grow for You for conscious reading and awareness.">
+
+<meta name="author" content="Gajanan Dhobale — Founder of Grow for You">
+
+<link rel="canonical" href="https://growforyou.in/reader.html">
+
+<meta property="og:title" content="Reader — Grow for You">
+<meta property="og:description" content="A mindful digital reading experience.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growforyou.in/reader.html">
+  <!-- Use your main site background -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Reader styles -->
+  <link rel="stylesheet" href="assets/reader/css/reader.css">
+</head>
+
+<body class="reader-mode">
+
+  <!-- TOP BAR -->
+  <header class="reader-top">
+    <button onclick="history.back()">←</button>
+    <span>GFY Reader 📖</span>
+    <span class="brand">Grow for You 🌱</span>
+ <button id="fullscreenBtn" aria-label="Full screen">⛶</button> 
+ </header>
+
+
+<!-- MEMBER LOCK MESSAGE -->
+<div id="memberGate"
+     style="
+       position: fixed;
+       inset: 0;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       background: linear-gradient(180deg, #020617, #020617);
+       z-index: 9999;
+     ">
+
+  <div
+    style="
+      max-width: 420px;
+      width: 90%;
+      padding: 36px 28px;
+      border-radius: 18px;
+      text-align: center;
+      background: rgba(2,6,23,0.9);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.65);
+    "
+  >
+    <h1 style="
+        font-size: 1.5rem;
+        margin-bottom: 14px;
+        color: #e5e7eb;
+      ">
+      This content is for<br>
+      <span style="color:#a5f3a1;">Grow for You members 🌿</span>
+    </h1>
+
+    <p style="
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #9ca3af;
+        margin-bottom: 26px;
+      ">
+      Please log in for free to continue reading.
+    </p>
+
+    <a href="login.html" class="btn">Join Grow for You 🌿</a>
+  </div>
+
+</div>
+
+<!-- READER CONTENT -->
+<div id="readerContent" style="display:none;">
+  <main class="reader-stage">
+    <img id="pageImage" class="reader-page" alt="Book page">
+  </main>
+
+  <footer class="reader-footer">
+    <span id="pageCounter">1 / 7</span>
+  </footer>
+
+  <audio id="flipSound" src="assets/reader/sounds/page-flip.mp3" preload="auto"></audio>
+</div>
+
+
+
+  <!-- Reader logic -->
+  <script src="assets/reader/js/reader.js"></script>
+<script>
+  // Membership check
+  const isMember = localStorage.getItem("gfy_member") === "true";
+
+  const gate = document.getElementById("memberGate");
+  const reader = document.getElementById("readerContent");
+
+  if (isMember) {
+    gate.style.display = "none";
+    reader.style.display = "block";
+  } else {
+    gate.style.display = "flex";
+    reader.style.display = "none";
+  }
+</script>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    netlifyIdentity.on('init', user => {
+      if (user) {
+        // Logged in
+        document.getElementById('memberGate').style.display = 'none';
+        document.getElementById('readerContent').style.display = 'block';
+      } else {
+        // Not logged in
+        document.getElementById('memberGate').style.display = 'block';
+        document.getElementById('readerContent').style.display = 'none';
+      }
+    });
+
+    netlifyIdentity.init();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Account — Grow for You</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Manage your Grow for You account, library, saved content, and community access.">
+
+<meta name="author" content="Gajanan Dhobale — Founder of Grow for You">
+
+<link rel="canonical" href="https://growforyou.in/account.html">
+
+<meta property="og:title" content="My Account — Grow for You">
+<meta property="og:description" content="Member dashboard for Grow for You.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://growforyou.in/account.html">
+
+  <!-- Main site styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Netlify Identity -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <style>
+    /* ===== Layout ===== */
+    .account-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 70px 20px;
+    }
+
+    /* ===== Login Gate ===== */
+    .login-gate {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .login-gate h2 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .login-gate p {
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+
+    /* ===== Profile ===== */
+    .account-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 12px;
+      cursor: pointer;
+      border: 2px solid rgba(99,102,241,0.4);
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .upload-note {
+      font-size: 0.75rem;
+      opacity: 0.6;
+      margin-bottom: 12px;
+    }
+
+    .member-badge {
+      margin-top: 8px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 6px 20px rgba(34,197,94,0.35);
+    }
+
+    /* ===== Actions ===== */
+    .account-actions {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .action-card {
+      background: #020617;
+      padding: 22px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .action-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+    }
+
+    /* ===== Sections ===== */
+    .hidden-section {
+      display: none;
+      margin-top: 50px;
+      background: #020617;
+      padding: 30px;
+      border-radius: 18px;
+    }
+
+    /* ===== Consultant Form ===== */
+    .consult-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .consult-form input,
+    .consult-form textarea {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #1e293b;
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    .consult-form button {
+      background: #22c55e;
+      color: #022c22;
+      font-weight: 600;
+      padding: 12px 26px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    /* ===== Logout ===== */
+    .logout-btn {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .logout-btn button {
+      background: #ef4444;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body data-page="account">
+
+<div id="site-header"></div>
+
+<!-- LOGIN REQUIRED MESSAGE -->
+<section id="loginRequired" style="display:none; text-align:center; padding:80px 20px;">
+  <h2>You’re not logged in 🌿</h2>
+  <p>Please log in to access your Grow for You account.</p>
+
+  <a href="/login.html" class="btn" style="margin-top:20px;">
+    Login to Grow for You
+  </a>
+</section>
+
+<!-- ===== LOGIN GATE ===== -->
+<div id="loginGate" class="login-gate" style="display:none;">
+  <h2>Welcome to Grow for You 🌿</h2>
+  <p>Please log in to access your account and community features.</p>
+  <button class="btn" onclick="netlifyIdentity.open()">Log in / Join</button>
+</div>
+
+<!-- ===== ACCOUNT ===== -->
+<section id="accountArea" class="account-wrapper" style="display:none;">
+
+  <div class="account-header">
+
+    <label class="profile-pic">
+  <img
+    id="profileImg"
+    src="assets/images/community.png"
+    alt="Profile picture"
+  >
+  <input
+    type="file"
+    accept="image/*"
+    onchange="uploadProfile(event)"
+  >
+</label>
+
+
+    <h2 id="userName">Member</h2>
+    <div class="member-badge">Verified Conscious Member </div>
+  </div>
+
+  <div class="account-actions">
+
+    <div class="action-card" onclick="toggleSection('librarySection')">
+      <h3>📚 Your Library</h3>
+      <p>Saved ebooks & reading history</p>
+    </div>
+
+    <div class="action-card" onclick="toggleSection('communitySection')">
+      <h3>💬 Live Community</h3>
+      <p>Members-only discussions</p>
+    </div>
+
+
+<div class="action-card" onclick="toggleSection('consultSection')">
+      <h3>🧠 Personal Consultation</h3>
+      <p>Private guidance & subliminals</p>
+    </div>
+
+  </div>
+
+  <div id="librarySection" class="hidden-section">
+    <h2>Your Library</h2>
+    <p>Reading history & saved content coming soon.</p>
+  </div>
+
+  <div id="communitySection" class="hidden-section">
+    <h2>Community</h2>
+    <p>Live community chat will appear here.</p>
+  </div>
+
+ 
+
+<div id="consultSection" class="hidden-section">
+    <h2>Private Consultation</h2>
+<div style="height: 20px;"></div>
+     
+  <form 
+  name="consult-form"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  action="/thank-you.html">
+
+  <!-- REQUIRED hidden input -->
+  <input type="hidden" name="form-name" value="consult-form">
+
+  <!-- Honeypot (anti-spam) -->
+  <p style="display:none;">
+    <label>
+      Don’t fill this if you are human:
+      <input name="bot-field">
+    </label>
+  </p>
+
+  <!-- Actual fields -->
+  <input 
+    type="text" 
+    name="name"
+    placeholder="Your Name"
+    required>
+
+  <input 
+    type="email" 
+    name="email"
+    placeholder="Your Email"
+    required>
+
+  <textarea 
+    name="message"
+    rows="4"
+    placeholder="Describe your concern..."
+    required></textarea>
+
+  <button type="submit" class="btn">
+    Submit
+  </button>
+</form>
+  </div>
+
+  <div class="logout-btn">
+    <button type="button" id="logoutBtn" class="btn btn-danger">
+  Log out
+</button>
+  </div>
+
+</section>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/main.js"></script>
+<div id="menuOverlay"></div>
+<script>
+  function toggleSection(id) {
+    document.querySelectorAll('.hidden-section').forEach(s => s.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function uploadProfile(e) {
+    const img = document.getElementById('profileImg');
+    img.src = URL.createObjectURL(e.target.files[0]);
+  }
+
+  if (window.netlifyIdentity) {
+    netlifyIdentity.on('init', user => {
+      if (!user) {
+        document.getElementById('loginGate').style.display = 'block';
+      } else {
+        document.getElementById('accountArea').style.display = 'block';
+        document.getElementById('userName').innerText =
+          user.user_metadata?.full_name || "Grow for You Member";
+      }
+    });
+    netlifyIdentity.init();
+  }
+</script>
+
+<script>
+  const profilePic = document.getElementById("profilePic");
+  const uploadInput = document.getElementById("profileUpload");
+
+  // Load saved profile image on page load
+  const savedImage = localStorage.getItem("gfy_profile_image");
+  if (savedImage) {
+    profilePic.innerHTML = `<img src="${savedImage}" alt="Profile" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+  }
+
+  // Handle image upload
+  uploadInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const imageData = e.target.result;
+
+      // Save image in localStorage
+      localStorage.setItem("gfy_profile_image", imageData);
+
+      // Show image
+      profilePic.innerHTML = `<img src="${imageData}" alt="Profile" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">`;
+    };
+    reader.readAsDataURL(file);
+  });
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</script>
+<script>
+  if (window.netlifyIdentity) {
+    netlifyIdentity.init();
+
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", () => {
+        netlifyIdentity.logout();
+      });
+    }
+
+    netlifyIdentity.on("logout", () => {
+      // Clear any local member flags if used
+      localStorage.removeItem("gfy_member");
+
+      // Redirect after logout
+      window.location.href = "/login.html";
+    });
+  }
+</script>
+
+<script
+    chatbot_id="6962f0550d2225501dcebf5a"
+    data-type="default"
+    src="https://app.thinkstack.ai/bot/thinkstackai-loader.min.js"
+></script>
+</body>
+</html>
